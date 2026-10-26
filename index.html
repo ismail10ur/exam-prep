@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English Exam Prep</title>
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--ink:#1d2433;--muted:#5d6678;--line:#d8deea;--pri:#2457c5;--pri2:#e8efff;--ok:#1f9d55;--okb:#e5f6ec;--half:#c27c00;--halfb:#fff4dc;--bad:#d64545;--badb:#fdeaea;--ws:#0f8a7e;--ws2:#e3f6f3}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Nunito,system-ui,sans-serif;font-size:16px;line-height:1.5}
+header{background:var(--pri);color:#fff;padding:18px 16px}
+header h1{margin:0;font-size:1.3rem}
+header p{margin:2px 0 0;opacity:.85;font-size:.9rem}
+main{max-width:820px;margin:0 auto;padding:16px}
+.tabs{display:flex;gap:8px;margin-bottom:14px}
+.tab{flex:1;padding:12px;border:2px solid var(--pri);background:#fff;color:var(--pri);border-radius:12px;font:inherit;font-weight:800;cursor:pointer}
+.tab.on{background:var(--pri);color:#fff}
+h2.part{font-size:1.05rem;margin:18px 0 8px}
+.grid{display:grid;gap:10px}
+.sc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;font:inherit;color:inherit;width:100%;gap:10px}
+.sc:hover{border-color:var(--pri)}
+.sc b{font-size:1.05rem}
+.sc small{color:var(--muted);display:block}
+.go{background:var(--pri2);color:var(--pri);border-radius:10px;padding:6px 12px;font-weight:800;white-space:nowrap}
+.sc.w:hover{border-color:var(--ws)}
+.sc.w .go{background:var(--ws2);color:var(--ws)}
+.note{color:var(--muted);font-size:.9rem;margin-top:14px}
+.back{background:none;border:none;color:var(--pri);font:inherit;font-weight:800;cursor:pointer;padding:0;margin-bottom:10px}
+.examhead{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px;margin-bottom:14px}
+.examhead h2{margin:0;font-size:1.1rem}
+.examhead div{color:var(--muted);font-size:.9rem}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin-bottom:14px}
+section h3{margin:0 0 10px;font-size:1rem}
+.mat{font-family:'Patrick Hand',cursive;font-size:1.2rem;line-height:1.45;border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;margin-bottom:12px;background:#fbfcff}
+.mat.dash{border-style:dashed}
+.mat .ttl{text-align:center;font-weight:bold;margin-bottom:4px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-bottom:12px}
+.cardx{border:1.5px solid var(--line);border-radius:10px;padding:8px;text-align:center;font-family:'Patrick Hand',cursive;font-size:1.15rem;background:#fbfcff}
+.cardx b{display:block;font-family:Nunito,sans-serif;font-size:.8rem;letter-spacing:.03em}
+.q{margin:10px 0}
+.q label{display:block;font-weight:700;margin-bottom:4px}
+input[type=text]{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;font:inherit;background:#fff}
+input[type=text]:focus{outline:none;border-color:var(--pri)}
+input.inl{display:inline-block;width:130px;padding:4px 8px;margin:0 4px}
+.pics{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px}
+.pic{border:1.5px solid var(--line);border-radius:12px;padding:8px;text-align:center}
+.pic .em{font-size:2.6rem;line-height:1.2;margin:4px 0 8px}
+.def{font-family:'Patrick Hand',cursive;font-size:1.15rem;border:1.5px solid var(--line);border-radius:20px;padding:4px 14px;margin-bottom:6px;display:inline-block}
+.dl{margin:12px 0;line-height:2.1}
+table.info{border-collapse:collapse;margin:8px 0 12px;width:100%;max-width:420px}
+table.info td{border:1px solid var(--line);padding:5px 8px}
+table.info td:first-child{font-weight:800;width:45%}
+.fb{font-size:.88rem;margin-top:4px;padding:4px 8px;border-radius:8px;display:none}
+.done .fb{display:block}
+.r-ok input{border-color:var(--ok);background:var(--okb)}
+.r-half input{border-color:var(--half);background:var(--halfb)}
+.r-bad input{border-color:var(--bad);background:var(--badb)}
+.fb.ok{color:var(--ok)}.fb.half{color:var(--half)}.fb.bad{color:var(--bad)}
+.btn{display:block;width:100%;padding:14px;border:none;border-radius:12px;background:var(--pri);color:#fff;font:inherit;font-weight:800;font-size:1.05rem;cursor:pointer;margin:6px 0}
+.btn.sec{background:#fff;color:var(--pri);border:2px solid var(--pri)}
+.btn.ws{background:var(--ws)}
+.btn.wsec{background:#fff;color:var(--ws);border:2px solid var(--ws)}
+.row{display:flex;gap:8px;flex-wrap:wrap}.row .btn{flex:1;min-width:180px}
+.score{background:var(--card);border:2px solid var(--pri);border-radius:14px;padding:16px;text-align:center;margin-bottom:14px}
+.score .big{font-size:2.6rem;font-weight:800;color:var(--pri)}
+.model{background:var(--pri2);border-radius:10px;padding:8px 12px;margin-top:10px;display:none;font-size:.95rem}
+.done .model{display:block}
+/* worksheets */
+.sheet{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 22px 26px}
+.sheet .shead{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:3px solid var(--ws);padding-bottom:8px;margin-bottom:6px;gap:10px;flex-wrap:wrap}
+.sheet .shead h2{margin:0;color:var(--ws);font-size:1.3rem}
+.sheet .shead span{font-size:.85rem;color:var(--muted)}
+.namel{display:flex;gap:16px;flex-wrap:wrap;font-size:.9rem;margin:6px 0 4px}
+.namel span{flex:1;min-width:150px;border-bottom:1px solid #999;padding-bottom:2px}
+.ex{margin:18px 0 0}
+.ex h4{margin:0 0 8px;font-size:1rem}
+.ex h4 b{background:var(--ws);color:#fff;border-radius:6px;padding:0 7px;margin-right:6px}
+.box{border:1.5px dashed var(--ws);border-radius:10px;padding:6px 10px;margin:6px 0 10px;font-weight:700;text-align:center;word-spacing:6px}
+.bl{display:inline-block;min-width:90px;border-bottom:1.5px solid #555;text-align:center;margin:0 3px;line-height:1.3}
+.ans{color:#c0392b;font-weight:800;visibility:hidden}
+.showans .ans{visibility:visible}
+ol.ws{margin:0;padding-left:22px}ol.ws li{margin:6px 0}
+.wpics{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:8px}
+.wpic{border:1.5px solid var(--line);border-radius:10px;padding:6px;text-align:center;font-size:.9rem}
+.wpic .em{font-size:2.3rem;line-height:1.25}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:6px 20px}
+.cat{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cat div{border:1.5px solid var(--line);border-radius:10px;padding:8px;min-height:120px}
+.cat b{display:block;text-align:center;margin-bottom:4px}
+.lines div{border-bottom:1px solid #aaa;height:30px}
+table.ws{border-collapse:collapse;width:100%;font-size:.92rem}
+table.ws td,table.ws th{border:1px solid var(--line);padding:5px;text-align:center}
+.read{font-family:'Patrick Hand',cursive;font-size:1.15rem;border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;background:#fbfcff}
+footer{text-align:center;color:var(--muted);font-size:.8rem;padding:20px}
+@media (max-width:560px){.two,.cat{grid-template-columns:1fr}}
+@media print{
+ body{background:#fff;font-size:13px}
+ header,footer,.noprint{display:none!important}
+ main{max-width:none;padding:0}
+ .sheet{border:none;padding:0}
+ .ex{break-inside:avoid}
+ .wpic .em{font-size:1.9rem}
+ .two{grid-template-columns:1fr 1fr}.cat{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<header><h1>English Exam Prep</h1><p>1st Term · 1st Exam · Theme 1: School Life</p></header>
+<main id="app"></main>
+<footer>Practice tests and worksheets for students. Your score is not sent to anyone.</footer>
+<script>
+// ---------- helpers ----------
+function norm(s){return (' '+String(s).toLowerCase().replace(/[’‘`´]/g,"'").replace(/favorite/g,'favourite').replace(/[^a-z0-9çğıöşü' ]+/g,' ').replace(/\s+/g,' ').trim()+' ');}
+function has(ans,p){return norm(ans).includes(' '+norm(p).trim());} // word-start match: thursday ⇒ thursdays
+function words(s){return norm(s).trim().split(' ').filter(Boolean).length;}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+const card=(h,rows)=>`<div class="cardx"><b>${h}</b>${rows}</div>`;
+
+// =====================================================================
+// GRADE 5 — Theme 1: School Life (people, places, rules, clubs, countries, national days)
+// =====================================================================
+const G5={
+ cards:[
+  {t:'Look at the student cards quickly and answer the questions.',
+   m:'<div class="cards">'+[['Emma','Germany','music'],['Raj','India','art'],['Ahmet','Türkiye','chess'],['Sofia','Italy','football']].map(c=>card('STUDENT CARD',`Name: ${c[0]}<br>Country: ${c[1]}<br>Club: ${c[2]}`)).join('')+'</div>',
+   q:[{q:'Where is Emma from?',k:['germany'],a:'She is from Germany.'},
+      {q:'Which club is Raj in?',k:['art'],a:'He is in the art club.'},
+      {q:'Who is from Türkiye?',k:['ahmet'],a:'Ahmet is from Türkiye.'},
+      {q:'Where is Sofia from?',k:['italy'],a:'She is from Italy.'},
+      {q:'Who is in the music club?',k:['emma'],a:'Emma is in the music club.'}]},
+  {t:'Look at the club cards quickly and answer the questions.',
+   m:'<div class="cards">'+[['Lucas','Brazil','drama'],['Mei','China','science'],['Elif','Türkiye','environment'],['Omar','Egypt','chess']].map(c=>card('CLUB CARD',`Name: ${c[0]}<br>Country: ${c[1]}<br>Club: ${c[2]}`)).join('')+'</div>',
+   q:[{q:'Where is Mei from?',k:['china'],a:'She is from China.'},
+      {q:'Which club is Omar in?',k:['chess'],a:'He is in the chess club.'},
+      {q:'Who is from Brazil?',k:['lucas'],a:'Lucas is from Brazil.'},
+      {q:'Which club is Elif in?',k:['environment'],a:'She is in the environment club.'},
+      {q:'Who is in the science club?',k:['mei'],a:'Mei is in the science club.'}]}
+ ],
+ poster:[
+  {t:'Read the poster quickly and answer the questions.',
+   m:'<div class="mat dash"><div class="ttl">SCHOOL CLUB DAYS – JOIN A CLUB!</div>Robotics club: Wednesdays in the computer lab. • Drama club: Thursdays in the conference hall. • Football club: Fridays on the sports field. • Please bring a photo for your club card. • Questions? Ask Mr Arslan in the teachers\' room.</div>',
+   q:[{q:'When is the drama club?',k:['thursday'],a:'It is on Thursdays.'},
+      {q:'Where is the robotics club?',k:['computer lab','computer room'],h:['computer'],a:'It is in the computer lab.'},
+      {q:'What must students bring?',k:['photo','photograph','picture'],a:'They must bring a photo.'},
+      {q:'Who can students ask?',k:['arslan'],a:'They can ask Mr Arslan.'}]},
+  {t:'Read the notice quickly and answer the questions.',
+   m:'<div class="mat dash"><div class="ttl">WELCOME TO OUR LIBRARY!</div>Open: Monday to Friday, 8:30 – 16:00 • You can borrow two books for one week. • Don\'t eat or drink in the library. • Please be quiet! • Our librarian: Ms Yılmaz</div>',
+   q:[{q:'When is the library open?',k:['monday to friday','monday friday','weekdays','8 30'],h:['monday','friday'],a:'From Monday to Friday, 8:30 – 16:00.'},
+      {q:'How many books can students borrow?',k:['two','2'],a:'They can borrow two books.'},
+      {q:"What mustn't students do in the library?",k:['eat','drink','noise','loud'],a:"They mustn't eat or drink."},
+      {q:'Who is the librarian?',k:['yılmaz','yilmaz'],a:'Ms Yılmaz is the librarian.'}]}
+ ],
+ text:[
+  {t:'Read the text and answer the questions.',
+   m:'<div class="mat">Hello! I\'m Tom. I\'m from England. I\'m a new student at Yıldız Lower Secondary School in Fethiye. My favourite place at school is the science lab because I love experiments. My friend Ela is in the music club, but I am in the robotics club. We build small robots after school. Our teacher, Ms Şahin, says, "You must wear your lab coat." On 29 October, our club makes a red and white flag for Republic Day.</div>',
+   q:[{q:'Where is Tom from?',k:['england'],a:'He is from England.'},
+      {q:"What is Tom's favourite place at school?",k:['science lab','lab'],h:['science'],a:'His favourite place is the science lab.'},
+      {q:'Why does Tom like the science lab?',k:['experiment'],a:'Because he loves experiments.'},
+      {q:'What do they do in the robotics club?',k:['build','robots'],h:['robot'],a:'They build small robots.'},
+      {q:'What does the club make on 29 October?',k:['flag'],a:'It makes a red and white flag.'}]},
+  {t:'Read the text and answer the questions.',
+   m:'<div class="mat">Hi! My name is Aisha. I\'m from Egypt, but now I live in Muğla. I\'m in Class 5A at Sunny Hill Secondary School. Our school has got a big garden, a library and a sports field. My favourite place is the sports field because I love running. Our coach is Mr Kaya. I\'m a member of the environment club. We plant trees and collect rubbish in the school garden. At school, we mustn\'t chew gum, and we must respect our teachers. On 23 April, we perform a show for National Sovereignty and Children\'s Day.</div>',
+   q:[{q:'Where is Aisha from?',k:['egypt'],a:'She is from Egypt.'},
+      {q:'Which class is Aisha in?',k:['5a','5 a'],a:'She is in Class 5A.'},
+      {q:'Why is the sports field her favourite place?',k:['running','run'],a:'Because she loves running.'},
+      {q:'What do they do in the environment club?',k:['plant','tree','rubbish','collect'],a:'They plant trees and collect rubbish.'},
+      {q:"What mustn't students do at school?",k:['gum'],a:"They mustn't chew gum."}]}
+ ],
+ dialogue:[
+  {t:'Read the dialogue and answer the questions.',
+   m:'<div class="mat"><b>Zeynep:</b> Hi! Are you a new student?<br><b>Leo:</b> Yes, I\'m Leo. I\'m from Canada.<br><b>Zeynep:</b> Nice to meet you! Who is your maths teacher?<br><b>Leo:</b> Mr Demir. He is very funny.<br><b>Zeynep:</b> Do you like painting?<br><b>Leo:</b> Yes, I do!<br><b>Zeynep:</b> Then join the art club. It\'s on Tuesdays in the art room.<br><b>Leo:</b> Great! Where is the art room?<br><b>Zeynep:</b> It\'s next to the library. Let\'s go!</div>',
+   q:[{q:'Where is Leo from?',k:['canada'],a:'He is from Canada.'},
+      {q:"Who is Leo's maths teacher?",k:['demir'],a:'Mr Demir.'},
+      {q:'When is the art club?',k:['tuesday'],a:'It is on Tuesdays.'},
+      {q:'Where is the art room?',k:['next to the library'],h:['library'],a:'It is next to the library.'}]},
+  {t:'Read the dialogue and answer the questions.',
+   m:'<div class="mat"><b>Mr Aydın:</b> Good morning! Are you new here?<br><b>Kim:</b> Yes, sir. I\'m Kim. I\'m from Korea.<br><b>Mr Aydın:</b> Welcome! I\'m the headmaster. How old are you?<br><b>Kim:</b> I\'m eleven.<br><b>Mr Aydın:</b> Which club do you want to join?<br><b>Kim:</b> The chess club. I can play chess very well.<br><b>Mr Aydın:</b> Great! Ms Er is the chess teacher. The club is on Mondays in Room 12.</div>',
+   q:[{q:'Where is Kim from?',k:['korea'],a:'She is from Korea.'},
+      {q:'Who is Mr Aydın?',k:['headmaster','principal','head teacher','headteacher'],a:'He is the headmaster.'},
+      {q:'How old is Kim?',k:['eleven','11'],a:'Kim is eleven.'},
+      {q:'When is the chess club?',k:['monday'],a:'It is on Mondays.'}]}
+ ],
+ pics:{t:'Look at the pictures and write the school words (people, places or clubs).',
+  q:[{e:'📚🤫',k:['library'],a:'library'},
+     {e:'🔬🧪',k:['lab','laboratory'],a:'science lab'},
+     {e:'🍽️🥪',k:['canteen','cafeteria','dining hall','lunch hall','dining room'],a:'canteen'},
+     {e:'🏀🤸',k:['gym','sports hall','gymnasium'],a:'gym'},
+     {e:'🎨🖌️',k:['art'],a:'art room / art club'},
+     {e:'💻🖱️',k:['computer','it room','it lab','ict'],a:'computer lab'},
+     {e:'👩‍⚕️🩹',k:['nurse','doctor'],a:'school nurse'},
+     {e:'🎸🎵',k:['music'],a:'music club'},
+     {e:'♟️',k:['chess'],a:'chess club'},
+     {e:'🎭',k:['drama','theatre','theater'],a:'drama club'},
+     {e:'🌱♻️',k:['environment','nature','recycling','recycle'],a:'environment club'},
+     {e:'⚽🥅',k:['sports field','football field','field','pitch'],a:'sports field'},
+     {e:'🧑‍🏫📖',k:['teacher'],a:'teacher'},
+     {e:'📌📋',k:['notice board','noticeboard','bulletin board','board'],a:'notice board'},
+     {e:'⛺🔥',k:['camp'],a:'summer camp'},
+     {e:'🥾⛰️',k:['trekking','hiking','trek','hike'],a:'trekking'},
+     {e:'🎣🐟',k:['fishing','fish'],a:'fishing'},
+     {e:'🚌🏛️',k:['trip','excursion'],a:'school trip'}]},
+ defs:{t:'Read the sentences and write the words.',
+  q:[{d:'This person manages the school.',k:['headmaster','headteacher','head teacher','principal','headmistress'],a:'headmaster'},
+     {d:'You borrow books from this place.',k:['library'],a:'library'},
+     {d:'Students line up here in the morning.',k:['garden','schoolyard','school yard','yard','playground'],a:'school garden'},
+     {d:'In this club, students play instruments and sing songs.',k:['music'],a:'music club'},
+     {d:'This person works in the office and answers the phone.',k:['secretary'],a:'secretary'},
+     {d:'This person teaches us sports and games.',k:['coach','pe teacher','sports teacher'],a:'coach'},
+     {d:'You go into the school garden through it.',k:['gate','door'],a:'gate'},
+     {d:'This person is in the same class as you.',k:['classmate','class mate'],a:'classmate'},
+     {d:'Students watch shows and speeches in this big room.',k:['conference hall','hall','auditorium'],a:'conference hall'},
+     {d:'You buy food and drinks here at school.',k:['canteen','cafeteria'],a:'canteen'},
+     {d:'We read school news on it. It is on the wall.',k:['notice board','noticeboard','bulletin board'],a:'notice board'}]},
+ word:{t:'Complete the dialogues with ONE word.',
+  q:[{s:'A: Where ___ Emma from?<br>B: She\'s from Germany.',k:['is'],a:'is'},
+     {s:'A: Are you in the art club?<br>B: Yes, I ___.',k:['am'],a:'am'},
+     {s:'Teacher: ___ run in the corridors! Walk slowly, please.',k:["don't"],a:"Don't"},
+     {s:'A: Can we eat in the classroom?<br>B: No, we ___. It\'s a school rule.',k:["can't",'cannot'],a:"can't"},
+     {s:'A: ___ is your PE teacher?<br>B: Mr Arslan.',k:['who'],a:'Who'},
+     {s:'A: Is Ms Kara a nurse?<br>B: No, she ___. She is a teacher.',k:["isn't"],a:"isn't"},
+     {s:'A: Do you like chess?<br>B: Yes, I ___. It\'s fun!',k:['do'],a:'do'},
+     {s:'A: ___ club are you in?<br>B: I\'m in the drama club.',k:['which','what'],a:'Which'},
+     {s:'A: ___ your school got a library?<br>B: Yes, it has.',k:['has'],a:'Has'},
+     {s:'There ___ a big garden at our school.',k:['is'],a:'is'},
+     {s:'There ___ twenty classrooms in our school.',k:['are'],a:'are'},
+     {s:'A: ___ are you from?<br>B: I\'m from Türkiye.',k:['where'],a:'Where'},
+     {s:'You ___ wear your school uniform. It\'s a rule.',k:['must'],a:'must'},
+     {s:'A: Can you play the guitar?<br>B: Yes, I ___.',k:['can'],a:'can'},
+     {s:'A: How ___ are you?<br>B: I\'m eleven.',k:['old'],a:'old'},
+     {s:'Students ___ chew gum in class. It\'s a rule!',k:["mustn't"],a:"mustn't"},
+     {s:'A: Is Ali your classmate?<br>B: Yes, he ___.',k:['is'],a:'is'},
+     {s:'A: How ___ students are there in your class?<br>B: Twenty-six.',k:['many'],a:'many'}]},
+ model:[
+  {t:n=>`Read the model text. Then write ${n} sentences about Mateo like the model.`,
+   m:'<div class="mat">Hi! My name is Ayşe. I\'m from Türkiye. I\'m a student at Sea School. My favourite school club is the drama club. I like acting.</div><b>Now write about Mateo:</b><table class="info"><tr><td>Name</td><td>Mateo</td></tr><tr><td>Country</td><td>Mexico</td></tr><tr><td>School</td><td>River School</td></tr><tr><td>Club</td><td>robotics club</td></tr><tr><td>Likes</td><td>building robots</td></tr></table>',
+   q:[{k:[['name','mateo'],["i'm",'mateo'],['i am','mateo']],h:['mateo'],a:'Hi! My name is Mateo.'},
+      {k:[['from','mexico']],h:['mexico'],a:"I'm from Mexico."},
+      {k:[['student','river school']],h:['river'],a:"I'm a student at River School."},
+      {k:[['club','robotics']],h:['robotics'],a:'My favourite school club is the robotics club.'},
+      {k:[['like','building robots'],['like','build robots'],['love','robots']],h:['robots'],a:'I like building robots.'}]},
+  {t:n=>`Read the model text. Then write ${n} sentences about Lily like the model.`,
+   m:'<div class="mat">Hello! I\'m Can. I\'m from Türkiye. I\'m in Class 5C. My favourite place at school is the library. I\'m in the chess club.</div><b>Now write about Lily:</b><table class="info"><tr><td>Name</td><td>Lily</td></tr><tr><td>Country</td><td>England</td></tr><tr><td>Class</td><td>5B</td></tr><tr><td>Favourite place</td><td>the art room</td></tr><tr><td>Club</td><td>drama club</td></tr></table>',
+   q:[{k:[["i'm",'lily'],['i am','lily'],['name','lily']],h:['lily'],a:"Hello! I'm Lily."},
+      {k:[['from','england']],h:['england'],a:"I'm from England."},
+      {k:[['class','5b'],['in','5b'],['class','5 b']],h:['5b','5 b'],a:"I'm in Class 5B."},
+      {k:[['favourite','art room']],h:['art'],a:'My favourite place at school is the art room.'},
+      {k:[['drama','club']],h:['drama'],a:"I'm in the drama club."}]}
+ ],
+ about:{t:n=>`Answer the questions about yourself. Write ${n} full sentences.`,
+  q:[{q:'What is your name?',re:/(my name is|i am|i'm) \w+/,a:'My name is Ali.'},
+     {q:'Where are you from?',re:/(i am|i'm) from \w+/,a:"I'm from Türkiye."},
+     {q:'What is your favourite place at school?',re:/(my favourite place|i like|i love)/,a:'My favourite place at school is the library.'},
+     {q:'What is your favourite school club?',re:/(my favourite (school )?club is|i like|i love|i'm in|i am in)/,a:'My favourite school club is the chess club.'},
+     {q:'Write one rule in your school.',re:/(don't|do not|must|mustn't|can't|cannot|always|never|please|shouldn't)/,a:"Don't run in the corridors."},
+     {q:'Which class are you in?',re:/(i am|i'm) in/,a:"I'm in Class 5A."},
+     {q:'Who is your English teacher?',re:/(teacher is|is my)/,a:'My English teacher is Mr Onur.'},
+     {q:'What must students do at school?',re:/(must|should|have to)/,a:'Students must listen to the teacher.'}]}
+};
+
+// =====================================================================
+// GRADE 6 — Theme 1: School Life (roles, responsibilities, routines, national days)
+// =====================================================================
+const G6={
+ cards:[
+  {t:'Look at the class duty cards quickly and answer the questions.',
+   m:'<div class="cards">'+[['CLASS LEADER','Deniz','opens the windows every morning'],['LIBRARY HELPER','Ayla','puts the books on the shelves on Wednesdays'],['RECYCLING TEAM','Burak and Nil','collect paper on Thursdays'],['FLAG TEAM','Kerem','raises the flag on Mondays']].map(c=>card(c[0],`${c[1]}<br>${c[2]}`)).join('')+'</div>',
+   q:[{q:'Who is the class leader?',k:['deniz'],a:'Deniz is the class leader.'},
+      {q:'What does Ayla do?',k:[['books','shelves']],h:['books'],a:'She puts the books on the shelves.'},
+      {q:'When does the recycling team collect paper?',k:['thursday'],a:'On Thursdays.'},
+      {q:'What does Kerem raise?',k:['flag'],a:'He raises the flag.'},
+      {q:'Who collects paper?',k:[['burak','nil']],h:['burak','nil'],a:'Burak and Nil collect paper.'}]},
+  {t:'Look at the ceremony role cards quickly and answer the questions.',
+   m:'<div class="cards">'+[['PRESENTER','Elif','guides the programme'],['FLAG CARRIER','Mert','carries the flag'],['CHOIR','Asya and Can','sing songs'],['POEM','Ozan','reads a poem']].map(c=>card(c[0],`${c[1]}<br>${c[2]}`)).join('')+'</div>',
+   q:[{q:'Who carries the flag?',k:['mert'],a:'Mert carries the flag.'},
+      {q:'What does Elif do?',k:['guide','programme','program','presenter'],a:'She guides the programme.'},
+      {q:'Who sings songs?',k:[['asya','can']],h:['asya','can'],a:'Asya and Can sing songs.'},
+      {q:'What does Ozan read?',k:['poem'],a:'He reads a poem.'},
+      {q:"What is Mert's role?",k:['flag'],a:'He is the flag carrier.'}]}
+ ],
+ poster:[
+  {t:'Read the programme quickly and answer the questions.',
+   m:'<div class="mat dash"><div class="ttl">23 APRIL CHILDREN\'S DAY FESTIVAL</div>9:00 Ceremony in the school garden • 9:20 National anthem – everyone sings • 9:40 Headmaster\'s speech • 10:15 Poems by 6th grade students • 11:00 Drama show in the conference hall • Families are welcome!</div>',
+   q:[{q:'Where is the ceremony?',k:['garden'],a:'It is in the school garden.'},
+      {q:"What time is the headmaster's speech?",k:['9 40','nine forty','twenty to ten'],a:'At 9:40.'},
+      {q:'Who reads poems?',k:['6th grade','sixth grade','6 th grade','6th graders','sixth graders'],h:['grade','students'],a:'6th grade students read poems.'},
+      {q:'Where is the drama show?',k:['conference hall'],h:['hall'],a:'It is in the conference hall.'}]},
+  {t:'Read the duty list quickly and answer the questions.',
+   m:'<div class="mat dash"><div class="ttl">CLASS 6B – WEEKLY DUTIES</div>Monday: Ada waters the plants. • Tuesday: Efe cleans the board. • Wednesday: Su opens the windows. • Thursday: Kaan takes the attendance list to the office. • Friday: Everyone tidies up the classroom.</div>',
+   q:[{q:'Who cleans the board?',k:['efe'],a:'Efe cleans the board.'},
+      {q:'What does Ada do on Mondays?',k:['plant','water'],a:'She waters the plants.'},
+      {q:'When does Su open the windows?',k:['wednesday'],a:'On Wednesdays.'},
+      {q:'What does everyone do on Fridays?',k:['tidy','clean'],a:'They tidy up the classroom.'}]}
+ ],
+ text:[
+  {t:'Read the text and answer the questions.',
+   m:'<div class="mat">Hi, I\'m Ela. I\'m in the sixth grade. I usually get up at half past six on school days. I always take the school bus, but on Wednesdays my father drives me to school. Every Monday morning, we sing the national anthem in the school garden. This term, I\'m the library helper, so I often stay in the library at lunchtime. I put the books on the shelves and help the younger students. After lunch, we always clean our tables in the lunch hall. On Thursdays, I go to the chess club after school.</div>',
+   q:[{q:'What time does Ela get up on school days?',k:['half past six','6 30','six thirty'],h:['six','6'],a:'She gets up at half past six.'},
+      {q:'How does Ela go to school on Wednesdays?',k:['father','dad','car'],a:'Her father drives her to school.'},
+      {q:'What do the students do every Monday morning?',k:['national anthem','anthem'],h:['sing'],a:'They sing the national anthem.'},
+      {q:'Why does Ela often stay in the library at lunchtime?',k:['library helper','helper'],a:'Because she is the library helper.'},
+      {q:'Where does Ela go on Thursdays after school?',k:['chess'],a:'She goes to the chess club.'}]},
+  {t:'Read the text and answer the questions.',
+   m:'<div class="mat">Hello! I\'m Kerem and I\'m a sixth grader. I usually wake up at seven o\'clock. I never miss breakfast. I walk to school with my sister because our school is near our house. Every morning, we line up in the schoolyard and greet our teachers. I\'m a volunteer in the school library on Tuesdays. I help students find books and return them to the shelves. I don\'t play football at break time; I often play chess with my friends. On 29 October, I give a speech at the school ceremony. I always feel excited and proud!</div>',
+   q:[{q:'What time does Kerem usually wake up?',k:['seven','7'],a:"He wakes up at seven o'clock."},
+      {q:'How does Kerem go to school?',k:['walk','foot'],a:'He walks to school with his sister.'},
+      {q:'What does Kerem do in the library?',k:['help','find','return','shelves'],a:'He helps students find books and returns them to the shelves.'},
+      {q:'What does Kerem often do at break time?',k:['chess'],a:'He often plays chess.'},
+      {q:'How does Kerem feel on 29 October?',k:['excited','proud'],a:'He feels excited and proud.'}]}
+ ],
+ dialogue:[
+  {t:'Read the dialogue and answer the questions.',
+   m:'<div class="mat"><b>Selin:</b> Friends, Teachers\' Day is on 24 November. Let\'s make a surprise for Ms Öztürk!<br><b>Nehir:</b> I can draw a big card. I love drawing!<br><b>Selin:</b> Great, Nehir. Who can write a poem?<br><b>Emir:</b> Me! I often write poems at home.<br><b>Selin:</b> OK, Emir. We practise together on Fridays after the last lesson.<br><b>Nehir:</b> Don\'t worry. We won\'t forget!</div>',
+   q:[{q:"When is Teachers' Day?",k:['24 november','november 24','24th november','twenty fourth'],h:['november'],a:'It is on 24 November.'},
+      {q:'What can Nehir do?',k:[['draw','card']],h:['draw'],a:'She can draw a big card.'},
+      {q:'Who can write a poem?',k:['emir'],a:'Emir can write a poem.'},
+      {q:'When do they practise?',k:['friday'],a:'On Fridays after the last lesson.'}]},
+  {t:'Read the dialogue and answer the questions.',
+   m:'<div class="mat"><b>Teacher:</b> Class, Republic Day is next week. We need volunteers.<br><b>Zehra:</b> I can decorate the classroom with balloons.<br><b>Teacher:</b> Thank you, Zehra. Who can read a poem?<br><b>Arda:</b> I can! I love poems.<br><b>Teacher:</b> Good. Ela, can you play the piano?<br><b>Ela:</b> Yes, I can. I practise every evening.<br><b>Teacher:</b> Great! We rehearse in the conference hall on Thursday afternoon.</div>',
+   q:[{q:'What is next week?',k:['republic day','republic'],a:'Republic Day is next week.'},
+      {q:'What can Zehra do?',k:['decorate','balloon'],a:'She can decorate the classroom with balloons.'},
+      {q:'Who can play the piano?',k:['ela'],a:'Ela can play the piano.'},
+      {q:'Where do they rehearse?',k:['conference hall'],h:['hall'],a:'They rehearse in the conference hall.'}]}
+ ],
+ pics:{t:'Look at the pictures and write the school activities or places.',
+  q:[{e:'📚📖',k:['library','read','book'],a:'library / read a book'},
+     {e:'🔬🧪',k:['experiment','lab'],a:'do an experiment'},
+     {e:'♟️',k:['chess'],a:'play chess'},
+     {e:'🚌🎒',k:['bus'],a:'take the bus'},
+     {e:'🚶🏫',k:['walk'],a:'walk to school'},
+     {e:'📝✏️',k:['homework'],a:'do homework'},
+     {e:'🎤🗣️',k:['speech'],a:'give a speech'},
+     {e:'🎶👫',k:['sing','choir','song'],a:'sing in the choir'},
+     {e:'🚩🚶',k:['flag'],a:'carry the flag'},
+     {e:'⏰🛏️',k:['wake up','get up'],a:'wake up'},
+     {e:'🍽️🥗',k:['lunch','eat','canteen','lunch hall'],a:'have lunch'},
+     {e:'📜🎙️',k:['poem'],a:'read a poem'},
+     {e:'🏃🏁',k:['race','run'],a:'running race'},
+     {e:'🎈🎉',k:['decorate','decoration'],a:'decorate the classroom'},
+     {e:'⚽🏆',k:['sport','football','sports field'],a:'play sports'},
+     {e:'🪴💧',k:['plant','water'],a:'water the plants'},
+     {e:'🧹🗑️',k:['clean','tidy'],a:'tidy up the classroom'},
+     {e:'👋🧑‍🏫',k:['greet','say hello','hello'],a:'greet the teacher'}]},
+ defs:{t:'Read the definitions and write the words.',
+  q:[{d:'to say hello to someone',k:['greet'],a:'greet'},
+     {d:'a piece of cloth with colours; every country has one',k:['flag'],a:'flag'},
+     {d:'the short free time between two lessons',k:['break','breaktime','recess'],a:'break (time)'},
+     {d:'a special day when people celebrate something',k:['festival','celebration','holiday','national day','ceremony'],a:'celebration'},
+     {d:'to take something and give it back later',k:['borrow'],a:'borrow'},
+     {d:'to offer to help without being asked',k:['volunteer'],a:'volunteer'},
+     {d:'to stand one behind another',k:['line up','queue'],a:'line up'},
+     {d:'a group of people who sing together',k:['choir'],a:'choir'},
+     {d:'a meeting of all the students and teachers',k:['assembly','ceremony'],a:'assembly'},
+     {d:'people walk together in the street on national days',k:['parade','march'],a:'parade'},
+     {d:'to walk into a place',k:['enter','go in','come in'],a:'enter'},
+     {d:'not to pass an exam',k:['fail'],a:'fail'}]},
+ word:{t:'Complete the dialogues with ONE word.',
+  q:[{s:'A: How often does Can walk to school?<br>B: Every day. He ___ walks to school.',k:['always'],a:'always'},
+     {s:'A: Does Ece help her teacher?<br>B: Yes, she ___.',k:['does'],a:'does'},
+     {s:'A: ___ Mert water the plants?<br>B: Yes, he does.',k:['does'],a:'Does'},
+     {s:'A: Where are my books?<br>B: I can\'t find ___. Maybe they are in the library.',k:['them'],a:'them'},
+     {s:'There ___ twenty-eight students in our class.',k:['are'],a:'are'},
+     {s:'A: Do you leave rubbish in the lunch hall?<br>B: No, we ___. We always clean our tables.',k:["don't"],a:"don't"},
+     {s:"A: ___ is Children's Day?<br>B: It's on 23 April.",k:['when'],a:'When'},
+     {s:'A: Is that your English teacher?<br>B: Yes. I like ___ very much. She is kind.',k:['her'],a:'her'},
+     {s:'My brother ___ like maths. He prefers art.',k:["doesn't"],a:"doesn't"},
+     {s:'Lisa ___ (carry) the flag every Monday.',k:['carries'],a:'carries'},
+     {s:'Mr Can is very kind. We all love ___.',k:['him'],a:'him'},
+     {s:'I can\'t carry this box. Can you help ___?',k:['me'],a:'me'},
+     {s:'A: ___ often do you go to the library?<br>B: Twice a week.',k:['how'],a:'How'},
+     {s:'I\'m ___ late for school. I always come on time.',k:['never'],a:'never'},
+     {s:'Our classroom is small. We keep ___ clean.',k:['it'],a:'it'},
+     {s:'Ada ___ (study) English every evening.',k:['studies'],a:'studies'},
+     {s:'Our lessons ___ (start) at nine o\'clock.',k:['start'],a:'start'},
+     {s:'A: What time ___ you get up?<br>B: At seven.',k:['do'],a:'do'}]},
+ model:[
+  {t:n=>`Read the model text. Then write ${n} sentences about Kaan's favourite routine like the model.`,
+   m:'<div class="mat">Hi, I\'m Melis. My favourite school routine is the morning reading time. We have it every day. We usually read short stories. It makes me feel calm.</div><b>Now write about Kaan (use "I"):</b><table class="info"><tr><td>Name</td><td>Kaan</td></tr><tr><td>Favourite routine</td><td>Wednesday art lesson</td></tr><tr><td>How often</td><td>every Wednesday</td></tr><tr><td>Activity</td><td>often paint pictures</td></tr><tr><td>Feeling</td><td>creative</td></tr></table>',
+   q:[{k:[["i'm",'kaan'],['i am','kaan'],['name','kaan']],h:['kaan'],a:"Hi, I'm Kaan."},
+      {k:[['routine','art']],h:['art'],a:'My favourite school routine is the Wednesday art lesson.'},
+      {k:[['every wednesday']],h:['wednesday'],a:'We have it every Wednesday.'},
+      {k:[['often','paint']],h:['paint'],a:'We often paint pictures.'},
+      {k:[['feel','creative'],['makes me','creative']],h:['creative'],a:'It makes me feel creative.'}]},
+  {t:n=>`Read the model text. Then write ${n} sentences about Efe like the model.`,
+   m:'<div class="mat">I\'m Lale. I get up at seven. I always walk to school. I\'m the class leader. On national days, I read a poem.</div><b>Now write about Efe (use "I"):</b><table class="info"><tr><td>Name</td><td>Efe</td></tr><tr><td>Get up</td><td>half past six</td></tr><tr><td>Go to school</td><td>usually / take the bus</td></tr><tr><td>Responsibility</td><td>library helper</td></tr><tr><td>National days</td><td>sing in the choir</td></tr></table>',
+   q:[{k:[["i'm",'efe'],['i am','efe'],['name','efe']],h:['efe'],a:"I'm Efe."},
+      {k:[['half past six'],['6 30'],['six thirty']],h:['six','6'],a:'I get up at half past six.'},
+      {k:[['usually','bus']],h:['bus'],a:'I usually take the bus to school.'},
+      {k:[['library helper']],h:['library'],a:"I'm the library helper."},
+      {k:[['sing','choir']],h:['choir','sing'],a:'On national days, I sing in the choir.'}]}
+ ],
+ about:{t:n=>`Answer the questions about your school life. Write ${n} full sentences.`,
+  q:[{q:'How do you go to school?',re:/\b(i|my)\b.*\b(go|goes|walk|take|takes|come|ride|drive|drives|by)\b/,a:'I usually go to school by bus.'},
+     {q:'What do you usually do during break time?',re:/\b(i|we)\b \w+/,a:'I usually talk with my friends.'},
+     {q:'What is your responsibility in your class?',re:/\b(i|my responsibility|my duty)\b/,a:'I clean the board after the lessons.'},
+     {q:'How often do you go to the library?',re:/\bi\b.*\b(always|usually|often|sometimes|never|every|once|twice|rarely|seldom)\b/,a:'I go to the library once a week.'},
+     {q:'What do you do on Republic Day at school?',re:/\b(we|i)\b \w+/,a:'We sing the national anthem and read poems.'},
+     {q:'What time do you get up on school days?',re:/\bi\b.*\b(get up|wake up|gets up)\b/,a:'I get up at seven o\'clock.'},
+     {q:'What do you never do in the classroom?',re:/\b(never|don't|do not)\b/,a:'I never shout in the classroom.'},
+     {q:'Who helps you with your homework?',re:/\b(helps me|help me|helps|i do)\b/,a:'My sister helps me with my homework.'}]}
+};
+
+// ---------- SCENARIOS: [section, number of questions] — MEB tables, same for both grades ----------
+const SCEN={
+ 1:[['cards',5],['text',5],['pics',5],['word',5],['model',5]],
+ 2:[['cards',5],['text',5],['pics',5],['word',5],['about',5]],
+ 3:[['cards',4],['poster',4],['text',5],['pics',4],['word',4],['model',4]],
+ 4:[['cards',4],['text',4],['dialogue',4],['pics',3],['defs',4],['word',3],['about',3]],
+ 5:[['cards',4],['poster',3],['text',3],['pics',3],['defs',3],['word',3],['word',3],['about',3]]
+};
+const GR={5:G5,6:G6};
+const app=document.getElementById('app');
+let grade=5, cur=null;
+try{grade=+localStorage.getItem('grade')||5}catch(e){}
+
+function home(){
+ cur=null;document.body.classList.remove('showans');
+ let h=`<div class="tabs">${[5,6].map(g=>`<button class="tab ${g==grade?'on':''}" onclick="setG(${g})">Grade ${g}</button>`).join('')}</div>`;
+ h+=`<h2 class="part">📝 Exam Practice</h2><div class="grid">`;
+ for(let s=1;s<=5;s++){const n=SCEN[s].reduce((t,x)=>t+x[1],0);
+  h+=`<button class="sc" onclick="openS(${s})"><span><b>Scenario ${s}</b><small>${n} questions · ${SCEN[s].length} parts · 100 points</small></span><span class="go">Start ›</span></button>`;}
+ h+=`</div><p class="note">Choose the scenario your teacher announced. Every time you start, you get new questions and pictures. Press <b>Check my answers</b> at the end.</p>`;
+ h+=`<h2 class="part">📄 Worksheets · Unit 1: School Life</h2><div class="grid">`;
+ WS[grade].forEach((w,i)=>{h+=`<button class="sc w" onclick="openW(${i})"><span><b>${w.title}</b><small>${w.sub}</small></span><span class="go">Open ›</span></button>`;});
+ h+=`</div><p class="note">Worksheets are for practice. You can print them or save them as PDF. Check your work with <b>Show answers</b>.</p>`;
+ app.innerHTML=h;window.scrollTo(0,0);
+}
+function setG(g){grade=g;try{localStorage.setItem('grade',g)}catch(e){}home();}
+
+function openS(s){
+ const B=GR[grade],plan=SCEN[s],total=plan.reduce((t,x)=>t+x[1],0),pts=100/total;
+ cur={s,items:[],pts};
+ const pools={},variant={};
+ let h=`<button class="back" onclick="home()">‹ Back</button><div class="examhead"><h2>Grade ${grade} · Scenario ${s}</h2><div>Reading-Writing Exam Practice · ${total} questions · 100 points</div></div><div id="res"></div>`;
+ plan.forEach(([key,n],si)=>{
+  let sec=B[key],qs;
+  if(Array.isArray(sec)){ sec=variant[key]||(variant[key]=pick(sec)); qs=key==='model'&&n===4?[0,1,3,4].map(i=>sec.q[i]):sec.q.slice(0,n); }
+  else { if(!pools[key]) pools[key]=shuffle(sec.q); qs=pools[key].splice(0,n); }
+  const L=String.fromCharCode(65+si);
+  const title=typeof sec.t==='function'?sec.t(n===5?'five':n===4?'four':'three'):sec.t;
+  h+=`<section><h3>${L}. ${title} (${n}x${+pts.toFixed(2)}=${Math.round(n*pts)})</h3>${sec.m||''}`;
+  if(key==='pics') h+='<div class="pics">';
+  qs.forEach((q,j)=>{
+   const id='i'+cur.items.length;cur.items.push({key,q,id});
+   if(key==='pics') h+=`<div class="pic" id="w${id}"><b>${j+1}.</b><div class="em">${q.e}</div><input type="text" id="${id}" autocomplete="off"><div class="fb" id="f${id}"></div></div>`;
+   else if(key==='defs') h+=`<div class="q" id="w${id}"><span class="def">${esc(q.d)}</span><input type="text" id="${id}" placeholder="${j+1})" autocomplete="off"><div class="fb" id="f${id}"></div></div>`;
+   else if(key==='word') h+=`<div class="q dl" id="w${id}"><b>${j+1})</b> ${q.s.replace('___',`<input type="text" class="inl" id="${id}" autocomplete="off">`)}<div class="fb" id="f${id}"></div></div>`;
+   else if(key==='model') h+=`<div class="q" id="w${id}"><input type="text" id="${id}" placeholder="${j+1})" autocomplete="off"><div class="fb" id="f${id}"></div></div>`;
+   else h+=`<div class="q" id="w${id}"><label>${j+1}) ${esc(q.q)}</label><input type="text" id="${id}" autocomplete="off"><div class="fb" id="f${id}"></div></div>`;
+  });
+  if(key==='pics') h+='</div>';
+  if(key==='model') h+=`<div class="model"><b>Model answer:</b> ${qs.map(q=>esc(q.a)).join(' ')}</div>`;
+  h+='</section>';
+ });
+ h+=`<button class="btn" onclick="check()">Check my answers</button><button class="btn sec" onclick="openS(${s})">New questions</button>`;
+ app.innerHTML=h;window.scrollTo(0,0);
+}
+
+function grade1(it,v){
+ const q=it.q,k=it.key;
+ if(!v.trim()) return 0;
+ if(k==='word') return q.k.some(x=>norm(v)===norm(x))?1:0;
+ if(k==='model'){ if(q.k.some(g=>g.every(p=>has(v,p)))) return 1; return q.h.some(p=>has(v,p))?.5:0;}
+ if(k==='about'){ const w=words(v); if(w>=3&&q.re.test(norm(v))) return 1; return w>=2?.5:0;}
+ const ok=q.k.some(p=>Array.isArray(p)?p.every(x=>has(v,x)):has(v,p));
+ if(ok) return 1;
+ return (q.h||[]).some(p=>has(v,p))?.5:0;
+}
+function check(){
+ let sc=0;
+ cur.items.forEach(it=>{
+  const v=document.getElementById(it.id).value,r=grade1(it,v),w=document.getElementById('w'+it.id),f=document.getElementById('f'+it.id);
+  sc+=r*cur.pts;w.classList.remove('r-ok','r-half','r-bad');w.classList.add('done',r===1?'r-ok':r?'r-half':'r-bad');
+  const ans=it.key==='about'?'Example: '+it.q.a:'Answer: '+it.q.a;
+  f.className='fb '+(r===1?'ok':r?'half':'bad');
+  f.textContent=r===1?'✓ Correct'+(it.key==='about'?' · '+ans:''):(r?'½ Almost. ':'✗ ')+ans;
+ });
+ document.querySelectorAll('section').forEach(s=>s.classList.add('done'));
+ sc=Math.round(sc);
+ const msg=sc>=85?'Excellent! 🌟':sc>=70?'Very good! 👍':sc>=50?'Good. Keep practising! 💪':'Read the texts again and try once more. 📚';
+ document.getElementById('res').innerHTML=`<div class="score"><div>Your score</div><div class="big">${sc} / 100</div><div>${msg}</div></div>`;
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// =====================================================================
+// WORKSHEETS — Unit 1 (printable, answer key toggle)
+// =====================================================================
+const b=(a,w)=>`<span class="bl" style="min-width:${w||90}px"><span class="ans">${a}</span></span>`;
+const ex=(n,t,body)=>`<div class="ex"><h4><b>${n}</b>${t}</h4>${body}</div>`;
+const ol=items=>`<ol class="ws">${items.map(i=>`<li>${i}</li>`).join('')}</ol>`;
+const lines=n=>`<div class="lines">${'<div></div>'.repeat(n)}</div>`;
+const wpics=items=>`<div class="wpics">${items.map((p,i)=>`<div class="wpic"><div class="em">${p[0]}</div>${i+1}. ${b(p[1],100)}</div>`).join('')}</div>`;
+
+const WS={
+5:[
+ {title:'Worksheet 1 · Vocabulary',sub:'People, places and clubs at school · countries',body:
+  ex(1,'Look at the pictures. Write the words from the box.',
+   `<div class="box">library · canteen · science lab · gym · music club · chess club · nurse · notice board</div>`+
+   wpics([['📚🤫','library'],['🍽️🥪','canteen'],['🔬🧪','science lab'],['🏀🤸','gym'],['🎸🎵','music club'],['♟️','chess club'],['👩‍⚕️🩹','nurse'],['📌📋','notice board']]))+
+  ex(2,'People or places? Write the words in the correct box.',
+   `<div class="box">headmaster · canteen · coach · library · secretary · gate · classmate · conference hall · teacher · playground</div>
+   <div class="cat"><div><b>👩‍🏫 People at School</b><span class="ans">headmaster, coach, secretary, classmate, teacher</span></div><div><b>🏫 Places at School</b><span class="ans">canteen, library, gate, conference hall, playground</span></div></div>`)+
+  ex(3,'Complete the sentences with the words from the box.',
+   `<div class="box">coach · secretary · classmate · conference hall · library · headmaster</div>`+
+   ol([`I'm hungry. I want to read a book, so I go to the ${b('library')}.`.replace("I'm hungry. ",''),
+       `Mr Polat teaches us basketball. He is our ${b('coach')}.`,
+       `Ece and I are in the same class. She is my ${b('classmate')}.`,
+       `Mr Aksoy manages our school. He is the ${b('headmaster')}.`,
+       `Ms Tan works in the office and answers the phone. She is the ${b('secretary')}.`,
+       `We watch the school show in the ${b('conference hall',120)}.`]))+
+  ex(4,'Where are they from? Write sentences.',
+   ol([`Hans 🇩🇪 Germany → <i>Hans is from Germany.</i>`,
+       `Yuki – Japan → ${b('Yuki is from Japan.',220)}`,
+       `Carlos – Spain → ${b('Carlos is from Spain.',220)}`,
+       `Amira and Omar – Egypt → ${b('They are from Egypt.',220)}`,
+       `Defne – Türkiye → ${b('Defne is from Türkiye.',220)}`,
+       `Jack – England → ${b('Jack is from England.',220)}`]).replace(' 🇩🇪',' –'))+
+  ex(5,'Match the clubs with the activities.',
+   `<div class="two"><div>${ol(['art club','drama club','environment club','music club','science club'])}</div><div>
+   a) We act in plays. <span class="ans">2</span><br>b) We do experiments. <span class="ans">5</span><br>c) We draw and paint pictures. <span class="ans">1</span><br>d) We plant trees and recycle. <span class="ans">3</span><br>e) We sing songs and play the guitar. <span class="ans">4</span></div></div>`)},
+ {title:'Worksheet 2 · Grammar, Reading & Writing',sub:'am / is / are · must / mustn\'t · question words · reading · writing',body:
+  ex(1,'Complete with am, is or are.',
+   ol([`I ${b('am',60)} a new student.`,`My teacher ${b('is',60)} from İzmir.`,`We ${b('are',60)} in Class 5B.`,`The library ${b('is',60)} next to the canteen.`,`Ali and Mert ${b('are',60)} in the chess club.`,`${b('Are',60)} you from Türkiye? – Yes, I ${b('am',60)}.`]))+
+  ex(2,'School rules: write must or mustn\'t.',
+   ol([`🏃‍♂️ You ${b("mustn't",80)} run in the corridors.`,`👔 You ${b('must',80)} wear your uniform.`,`🍬 You ${b("mustn't",80)} chew gum in class.`,`✋ You ${b('must',80)} raise your hand to speak.`,`📱 You ${b("mustn't",80)} use your phone in the lesson.`,`🧑‍🏫 You ${b('must',80)} respect your teachers.`]))+
+  ex(3,'Match the questions with the answers.',
+   `<div class="two"><div>${ol(['Where are you from?','Who is your PE teacher?','How old are you?','Which club are you in?','How many classrooms are there?','What is your favourite place?'])}</div><div>
+   a) I'm eleven. <span class="ans">3</span><br>b) Mr Kaya. <span class="ans">2</span><br>c) The library. <span class="ans">6</span><br>d) I'm from Türkiye. <span class="ans">1</span><br>e) There are twenty. <span class="ans">5</span><br>f) The drama club. <span class="ans">4</span></div></div>`)+
+  ex(4,'Read the text. Write T (true) or F (false). Then answer the questions.',
+   `<div class="read">Hi! I'm Maria and I'm from Spain. I'm a pupil at Blue Sea Secondary School in Fethiye. My classmates are very friendly. Our school has got a big library, a science lab and a sports field, but there isn't a swimming pool. My favourite place is the science lab because I love experiments. I'm in the science club and my best friend Zehra is in the music club. On 29 October, we sing songs and carry flags for Republic Day. At our school, we must be on time and we mustn't shout in the classroom.</div>`+
+   ol([`Maria is from Italy. ${b('F',40)}`,`There is a swimming pool at the school. ${b('F',40)}`,`Maria loves experiments. ${b('T',40)}`,`Zehra is in the music club. ${b('T',40)}`,
+       `What does the school have got? ${b('a library, a science lab and a sports field',300)}`,
+       `What do they do on 29 October? ${b('They sing songs and carry flags.',300)}`,
+       `What mustn't students do? ${b("They mustn't shout in the classroom.",300)}`]))+
+  ex(5,'Write about you and your school (5–6 sentences).',`<p style="margin:0 0 4px;font-size:.9rem">Your name and country • your class • two school places • your favourite place and why • your club • one school rule</p>`+lines(6))}
+],
+6:[
+ {title:'Worksheet 1 · Vocabulary',sub:'School activities, duties and national days',body:
+  ex(1,'Look at the pictures. Write the phrases from the box.',
+   `<div class="box">carry the flag · give a speech · line up · sing in the choir · do an experiment · take the bus · water the plants · tidy up the classroom</div>`+
+   wpics([['🚩🚶','carry the flag'],['🎤🗣️','give a speech'],['🧍🧍🧍','line up'],['🎶👫','sing in the choir'],['🔬🧪','do an experiment'],['🚌🎒','take the bus'],['🪴💧','water the plants'],['🧹🗑️','tidy up the classroom']]))+
+  ex(2,'Match the verbs with the words.',
+   `<div class="two"><div>${ol(['greet','take','keep','join','read','borrow'])}</div><div>
+   a) a poem <span class="ans">5</span><br>b) the classroom clean <span class="ans">3</span><br>c) books from the library <span class="ans">6</span><br>d) the teacher <span class="ans">1</span><br>e) the drama club <span class="ans">4</span><br>f) notes in the lesson <span class="ans">2</span></div></div>`)+
+  ex(3,'Complete the sentences with the words from the box.',
+   `<div class="box">assembly · volunteer · parade · choir · headmaster · conference hall</div>`+
+   ol([`Students march with flags in the ${b('parade')} on 29 October.`,`The ${b('choir')} sings the national anthem at the ceremony.`,`I want to ${b('volunteer')} in the school library.`,`Our ${b('headmaster')} gives a speech every Monday.`,`All students meet in the school garden for the ${b('assembly')}.`,`We watch the talent show in the ${b('conference hall',120)}.`]))+
+  ex(4,'Read the definitions and write the words.',
+   ol([`to say hello to someone → ${b('greet')}`,`to take something and give it back later → ${b('borrow')}`,`to walk into a place → ${b('enter')}`,`not to pass an exam → ${b('fail')}`,`to make a place beautiful for a special day → ${b('decorate')}`,`a group of people who sing together → ${b('choir')}`]))+
+  ex(5,'Odd one out. Circle the different word.',
+   ol([`library · canteen · <u>speech</u> · playground <span class="ans">(speech – not a place)</span>`,`<u>angry</u> · helpful · friendly · responsible <span class="ans">(angry – not positive)</span>`,`sing · read · carry · <u>flag</u> <span class="ans">(flag – not a verb)</span>`,`Republic Day · Children's Day · <u>chess club</u> · Victory Day <span class="ans">(chess club)</span>`]).replace(/<u>(.*?)<\/u>/g,'$1'))},
+ {title:'Worksheet 2 · Grammar, Reading & Writing',sub:'Simple Present · adverbs of frequency · object pronouns · reading · writing',body:
+  ex(1,'Complete the text. Use the Simple Present form of the verbs.',
+   `<div class="read" style="line-height:2.2">My name is Nil. I ${b('get',70)} (get) up at seven. My brother ${b('gets',70)} (get) up at half past seven. We ${b('walk',70)} (walk) to school together. Our lessons ${b('start',70)} (start) at 8:30. My best friend Ali ${b('studies',80)} (study) in my class. He ${b("doesn't talk",110)} (not / talk) during the lessons. We ${b("don't eat",100)} (not / eat) in the classroom. Our teacher ${b('carries',80)} (carry) the flag on national days. After school, I ${b('do',60)} (do) my homework.</div>`)+
+  ex(2,'Look at the table. Write sentences with always, usually, often, sometimes or never.',
+   `<table class="ws"><tr><th></th><th>Mon</th><th>Tue</th><th>Wed</th><th>Thu</th><th>Fri</th></tr>
+   <tr><td>Ece – walk to school</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td></tr>
+   <tr><td>Mert – play chess</td><td>✔</td><td></td><td>✔</td><td></td><td></td></tr>
+   <tr><td>Su – be late</td><td></td><td></td><td></td><td></td><td></td></tr>
+   <tr><td>Can – help the teacher</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td><td></td></tr>
+   <tr><td>Ada – read in the library</td><td>✔</td><td>✔</td><td></td><td>✔</td><td></td></tr></table>`+
+   ol([`${b('Ece always walks to school.',300)}`,`${b('Mert sometimes plays chess.',300)}`,`${b('Su is never late.',300)}`,`${b('Can usually helps the teacher.',300)}`,`${b('Ada often reads in the library.',300)}`]))+
+  ex(3,'Complete with object pronouns.',`<div class="box">me · you · him · her · it · us · them</div>`+
+   ol([`Ms Sarı is our teacher. We love ${b('her',60)}.`,`Ali has a lot of books. Please help ${b('him',60)}.`,`These chairs are heavy. Can you carry ${b('them',60)}?`,`I'm in the choir. The teacher always listens to ${b('me',60)}.`,`Our classroom is clean. We tidy ${b('it',60)} every day.`,`We are new here. Can you show ${b('us',60)} the library?`]))+
+  ex(4,'Put the words in order.',
+   ol([`always / greet / our teacher / we → ${b('We always greet our teacher.',260)}`,`the flag / Leo / carries / on Mondays → ${b('Leo carries the flag on Mondays.',260)}`,`never / she / late / is / for school → ${b('She is never late for school.',260)}`,`in the canteen / have lunch / we / usually → ${b('We usually have lunch in the canteen.',260)}`]))+
+  ex(5,'Read the text and answer the questions.',
+   `<div class="read">Hi, I'm Arda. I'm the class leader in 6A. Every morning, I open the windows and check the attendance list. My friend Defne is the library helper. She puts the books on the shelves on Tuesdays and Thursdays. We sometimes have a school assembly in the conference hall. On 23 April, our class always prepares a show. I give a speech, and Defne reads a poem. I feel very happy on national days because everyone celebrates together.</div>`+
+   ol([`What does Arda do every morning? ${b('He opens the windows and checks the attendance list.',300)}`,`When does Defne put the books on the shelves? ${b('On Tuesdays and Thursdays.',260)}`,`Where do they have the assembly? ${b('In the conference hall.',220)}`,`What does Defne do on 23 April? ${b('She reads a poem.',220)}`,`Why does Arda feel happy on national days? ${b('Because everyone celebrates together.',300)}`]))+
+  ex(6,'Write about YOUR school life (6–8 sentences).',`<p style="margin:0 0 4px;font-size:.9rem">Your morning routine • a responsibility at school • a club or activity • a national day. Use at least two frequency adverbs and one negative sentence.</p>`+lines(7))}
+]};
+
+function openW(i){
+ const w=WS[grade][i];document.body.classList.remove('showans');
+ let h=`<button class="back noprint" onclick="home()">‹ Back</button>
+ <div class="row noprint"><button class="btn ws" onclick="window.print()">🖨️ Print / Save as PDF</button><button class="btn wsec" id="sa" onclick="toggleAns()">Show answers</button></div>
+ <div class="sheet"><div class="shead"><h2>${w.title}</h2><span>Grade ${grade} · Unit 1 · School Life</span></div>
+ <div class="namel"><span>Name:</span><span>Class:</span><span>No:</span></div>${w.body}</div>`;
+ app.innerHTML=h;window.scrollTo(0,0);
+}
+function toggleAns(){const on=document.body.classList.toggle('showans');document.getElementById('sa').textContent=on?'Hide answers':'Show answers';}
+home();
+</script>
+</body>
+</html>
